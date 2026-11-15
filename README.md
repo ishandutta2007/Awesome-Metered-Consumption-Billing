@@ -1,16 +1,27 @@
-# Awesome Metered & Consumption Billing [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Metered & Consumption Billing [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/ishandutta2007/Awesome-Metered-Consumption-Billing/)
 
-> A curated list of top **Metered and Consumption Billing** platforms, usage-based pricing software, event rating engines, and open-source infrastructure for ingesting high-frequency usage telemetry, managing entitlements, and automating revenue operations.
-> 🌟 Star this repo if you find it useful! 🌟
+> A comprehensive, curated index of open-source software, cloud platforms, and developer frameworks for **Metered Billing, Consumption Billing, Usage-Based Pricing (UBP), Real-Time Event Metering, and AI Token Monetization**.
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/ishandutta2007/Awesome-Metered-Consumption-Billing?style=social)](https://github.com/ishandutta2007/Awesome-Metered-Consumption-Billing/stargazers)
+
+---
+
+## 🔍 Why Metered & Consumption Billing?
+
+Modern software infrastructure, AI agentic pipelines, serverless platforms, and API products are shifting away from traditional seat-based recurring subscriptions toward **consumption-based and hybrid billing models**. Operating these systems requires high-throughput event ingestion, sub-millisecond aggregation (tokens, compute seconds, API queries, bandwidth), entitlement quota enforcement, balance wallets, and automated invoice delivery.
 
 ---
 
 ## 📋 Table of Contents
 
 - [Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [Key Features to Evaluate](#-key-features-to-evaluate)
 - [SaaS / Hosted Platforms](#-saas--hosted-platforms)
 - [Open-Source Software](#-open-source-software)
 - [Feature Comparison Matrix](#-feature-comparison-matrix)
+- [Architecture Patterns](#-architecture-patterns)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -18,7 +29,20 @@
 
 ## 📈 Sector Overview & Market Dynamics
 
-The global cloud and usage-based billing management market is estimated at **$12.7B to $14.2B** (with the broader recurring subscription billing sector accounting for an additional **$7.5B to $8.5B**), driven by rapid expansion in AI token monetization, API-first software, and consumption-driven SaaS models. The sector is **moderately fragmented yet experiencing aggressive consolidation**, where high-scale point solutions are steadily acquired by payment networks and CRM giants (e.g., Stripe acquiring Metronome for ~$1B, Adyen acquiring Orb for $335M, and Salesforce acquiring m3ter), while independent open-source engines lead the developer-native infrastructure layer.
+The global cloud and usage-based billing management market is estimated at **$12.7B to $14.2B** (with the broader recurring subscription billing sector accounting for an additional **$7.5B to $8.5B**), driven by rapid expansion in AI token monetization, API-first software, and consumption-driven SaaS models. 
+
+The sector is **moderately fragmented yet experiencing aggressive consolidation**, where high-scale point solutions are steadily acquired by payment networks and CRM giants (e.g., Stripe acquiring Metronome for ~$1B, Adyen acquiring Orb for $335M, and Salesforce acquiring m3ter), while independent open-source engines lead the developer-native infrastructure layer.
+
+---
+
+## ⚙️ Key Features to Evaluate
+
+When architecting a usage-based monetization engine, teams typically evaluate:
+1. **Event Ingestion Throughput & Latency:** Can the pipeline process thousands of CloudEvents per second with deduplication (e.g., Kafka, ClickHouse)?
+2. **Entitlement & Quota Enforcement:** Real-time balance tracking, hard/soft limits, grace periods, and feature flag gating.
+3. **AI / LLM Cost Modeling:** Dimensional rate cards for prompt/completion tokens, model fine-tuning compute, and provider markup.
+4. **Prepaid Credits & Wallets:** Priority burndown, promotional grants, currency expiration, and automated top-ups.
+5. **Invoicing & Compliance:** Automated prorating, tax calculations, ASC 606 revenue recognition, and payment gateway synchronization (Stripe, Adyen).
 
 ---
 
@@ -109,6 +133,31 @@ Self-hosted, developer-first, and community-driven metered consumption billing p
 | **Meteroid** | Self-Hosted | AGPL-3.0 | ✅ Real-time | ⚠️ Via Events | ✅ | ✅ | Rust-native pricing & cost limiting |
 | **Tier** | CLI / Self-Hosted | BSD-3-Clause | ⚠️ Via Stripe | ❌ | ❌ | ⚠️ Via Stripe | Pricing as Code for Stripe |
 | **Portcall** | Self-Hosted | Open Source | ✅ Real-time | ❌ | ⚠️ | ⚠️ | Entitlements & metered quota limits |
+
+---
+
+## 🏛️ Architecture Patterns
+
+Common architectural blueprints for implementing metered & consumption billing:
+
+```
+[Applications / AI Agents]
+          │ (High-volume usage events, tokens, API calls)
+          ▼
+[Message Stream / Ingestion Buffer] (Kafka, Redis, RabbitMQ, SQS)
+          │
+          ▼
+[Real-Time Metering & Rating Engine] (ClickHouse, OpenMeter, Lago, Flexprice)
+   ├── Real-time Quota Checks & Entitlement Gates
+   ├── Multi-Dimensional Aggregation (SUM, COUNT, MAX, Distinct)
+   └── Wallet & Prepaid Credit Burndown
+          │
+          ▼
+[Invoicing, Billing & Compliance Engine] (Stripe, Adyen, Chargebee, Kill Bill)
+   ├── Rate Card Application (Tiered, Volume, Stair-step)
+   ├── Tax Automation & ASC 606 Revenue Recognition
+   └── Automated Payment Collection & Dunning
+```
 
 ---
 
