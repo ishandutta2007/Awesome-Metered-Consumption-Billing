@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="360" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0d1527"/>
+      <stop offset="100%" stop-color="#070a14"/>
+    </linearGradient>
+
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Filters for Glow & Shadows -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Animated Pattern for Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.75" stroke-opacity="0.4"/>
+      <circle cx="40" cy="0" r="1.5" fill="#38bdf8" fill-opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <style>
+    .title-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 46px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: 19px;
+      fill: #94a3b8;
+    }
+    .badge-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .metric-value {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      fill: #f8fafc;
+    }
+    .metric-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      fill: #64748b;
+    }
+
+    /* CSS Animations for Dynamic Effects */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.08); }
+    }
+    @keyframes flowLine {
+      0% { stroke-dashoffset: 400; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes floatCard1 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    @keyframes floatCard2 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(8px); }
+    }
+    @keyframes floatCard3 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes beamSweep {
+      0% { transform: translateX(-300px); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateX(1300px); opacity: 0; }
+    }
+
+    .ambient-orb {
+      animation: pulseGlow 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .dynamic-wave {
+      stroke-dasharray: 20 10;
+      animation: flowLine 15s linear infinite;
+    }
+    .dynamic-line {
+      stroke-dasharray: 8 6;
+      animation: flowLine 8s linear infinite;
+    }
+    .card-float-1 { animation: floatCard1 5s ease-in-out infinite; }
+    .card-float-2 { animation: floatCard2 6s ease-in-out infinite; }
+    .card-float-3 { animation: floatCard3 4.5s ease-in-out infinite; }
+    .pulse-dot {
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+
+  <!-- Ambient Light Orbs (Background depth) -->
+  <circle cx="200" cy="80" r="160" fill="#38bdf8" opacity="0.12" filter="url(#glow)" class="ambient-orb" />
+  <circle cx="1020" cy="180" r="180" fill="#818cf8" opacity="0.1" filter="url(#glow)" class="ambient-orb" style="animation-delay: -3s;" />
+  <circle cx="600" cy="320" r="140" fill="#34d399" opacity="0.08" filter="url(#glow)" class="ambient-orb" style="animation-delay: -1.5s;" />
+
+  <!-- Technical Grid Pattern -->
+  <rect width="100%" height="100%" fill="url(#grid)" opacity="0.7"/>
+
+  <!-- Dynamic Usage Waves in Background (Behind cards and text) -->
+  <g opacity="0.35">
+    <path d="M -100 290 Q 200 210 500 280 T 1100 240 T 1350 270" fill="none" stroke="url(#primaryGrad)" stroke-width="2.5" class="dynamic-wave"/>
+    <path d="M -100 310 Q 250 250 600 320 T 1150 280 T 1350 300" fill="none" stroke="url(#accentGrad)" stroke-width="1.8" class="dynamic-line"/>
+  </g>
+
+  <!-- Decorative Live Metric Cards (Right Side / Dynamic Floating) -->
+  <g transform="translate(860, 45)">
+    <!-- Metric Card 1: Event Ingestion Rate -->
+    <g class="card-float-1" transform="translate(0, 0)">
+      <rect width="280" height="74" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#softGlow)"/>
+      <circle cx="28" cy="37" r="14" fill="#0284c7" fill-opacity="0.25"/>
+      <circle cx="28" cy="37" r="6" fill="#38bdf8" class="pulse-dot"/>
+      <text x="54" y="32" class="metric-label">STREAM INGESTION</text>
+      <text x="54" y="53" class="metric-value">1.48M events / sec</text>
+      <path d="M 215 48 Q 230 35 245 42 T 268 28" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Metric Card 2: AI Token Metering -->
+    <g class="card-float-2" transform="translate(15, 94)">
+      <rect width="280" height="74" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#softGlow)"/>
+      <circle cx="28" cy="37" r="14" fill="#6366f1" fill-opacity="0.25"/>
+      <polygon points="28,30 35,42 21,42" fill="#818cf8"/>
+      <text x="54" y="32" class="metric-label">AI TOKEN BURNDOWN</text>
+      <text x="54" y="53" class="metric-value">842.6M tokens rated</text>
+      <path d="M 215 50 Q 235 52 245 35 T 268 30" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Metric Card 3: Real-Time Invoicing -->
+    <g class="card-float-3" transform="translate(-10, 188)">
+      <rect width="280" height="74" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#softGlow)"/>
+      <circle cx="28" cy="37" r="14" fill="#059669" fill-opacity="0.25"/>
+      <rect x="23" y="32" width="10" height="10" rx="2" fill="#34d399"/>
+      <text x="54" y="32" class="metric-label">RATING LATENCY</text>
+      <text x="54" y="53" class="metric-value">&lt; 1.2ms p99 SLA</text>
+      <path d="M 215 45 Q 230 48 245 33 T 268 38" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- FOREGROUND: Clean, Unobstructed Title, Subtitle, and Feature Pills -->
+  <g transform="translate(70, 75)">
+    <!-- Header Category Pill -->
+    <g transform="translate(0, 0)">
+      <rect width="258" height="30" rx="15" fill="#1e293b" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.6"/>
+      <circle cx="16" cy="15" r="5" fill="#34d399" class="pulse-dot"/>
+      <text x="29" y="20" class="badge-text" fill="#38bdf8">USAGE-BASED MONETIZATION</text>
+    </g>
+
+    <!-- Main Title -->
+    <g transform="translate(0, 72)">
+      <text class="title-text" fill="url(#primaryGrad)">Awesome Metered Billing</text>
+      <text x="0" y="44" class="title-text" fill="#f8fafc">&amp; Consumption Pricing</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="0" y="156" class="subtitle-text">Curated engines, telemetry pipelines &amp; billing infrastructure for AI &amp; SaaS</text>
+
+    <!-- Feature Tags / Pills -->
+    <g transform="translate(0, 188)">
+      <!-- Pill 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="130" height="28" rx="8" fill="#1e293b" fill-opacity="0.8" stroke="#475569" stroke-width="1"/>
+        <text x="65" y="18" text-anchor="middle" class="badge-text" fill="#94a3b8">⚡ Event Ingestion</text>
+      </g>
+      <!-- Pill 2 -->
+      <g transform="translate(140, 0)">
+        <rect width="138" height="28" rx="8" fill="#1e293b" fill-opacity="0.8" stroke="#475569" stroke-width="1"/>
+        <text x="69" y="18" text-anchor="middle" class="badge-text" fill="#94a3b8">🤖 LLM Token Rating</text>
+      </g>
+      <!-- Pill 3 -->
+      <g transform="translate(288, 0)">
+        <rect width="135" height="28" rx="8" fill="#1e293b" fill-opacity="0.8" stroke="#475569" stroke-width="1"/>
+        <text x="67" y="18" text-anchor="middle" class="badge-text" fill="#94a3b8">💳 Prepaid Wallets</text>
+      </g>
+      <!-- Pill 4 -->
+      <g transform="translate(433, 0)">
+        <rect width="125" height="28" rx="8" fill="#1e293b" fill-opacity="0.8" stroke="#475569" stroke-width="1"/>
+        <text x="62" y="18" text-anchor="middle" class="badge-text" fill="#94a3b8">🛡️ Entitlements</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Accent Highlight Line -->
+  <rect x="0" y="356" width="100%" height="4" fill="url(#primaryGrad)"/>
+</svg>
