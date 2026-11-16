@@ -74,7 +74,7 @@ Commercial, cloud-hosted usage-based and metered billing platforms sorted by com
 
 ## 🟩 Open-Source Software
 
-Self-hosted, developer-first, and community-driven metered consumption billing platforms, sorted by GitHub Stars_Count (descending) 🌟.
+Self-hosted, developer-first, and community-driven metered consumption billing platforms, sorted by GitHub_Stars_Count (descending) 🌟.
 
 ### 1. [Lago](https://github.com/getlago/lago) [![GitHub_Stars](https://img.shields.io/github/stars/getlago/lago?style=social&color=white)](https://github.com/getlago/lago/stargazers)
 - **Stack:** Ruby on Rails / PostgreSQL / Redis / ClickHouse
